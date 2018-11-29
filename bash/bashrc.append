@@ -1,0 +1,4 @@
+
+if [ -f ~/.xbash/xbashrc ]; then
+	. ~/.xbash/xbashrc
+fi
