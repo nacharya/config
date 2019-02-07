@@ -53,7 +53,8 @@ map P :PluginInstall
 
 filetype plugin indent on
 set t_Co=256 
-colorscheme PaperColor
+" TODO: find a color scheme that works everywhere
+" colorscheme PaperColor
 syntax on
 
 " set filetype to unix. VS2010 knows how to deal with this now. 
@@ -73,10 +74,16 @@ let mapleader = ","
 " handy cut-paste I got from John Gray
 " note: interferes with shift-V for the visual mode
 "
-map K :'m,. w! $HOME/.vim/buf
-map V : r $HOME/.vim/buf
+" Copy
+map C :'m,. w! $HOME/.vim/buf
+" Cut
 map X :d'm w! $HOME/.vim/buf
+" Paste
+map V : r $HOME/.vim/buf
 "
+"
+" JSON formatting using python
+map S :%!python -m json.tool
 "
 " wrap
 set wrap
