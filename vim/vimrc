@@ -53,7 +53,8 @@ map P :PluginInstall
 
 filetype plugin indent on
 set t_Co=256 
-colorscheme PaperColor
+" TODO: find a color scheme that works everywhere
+" colorscheme PaperColor
 syntax on
 
 " set filetype to unix. VS2010 knows how to deal with this now. 
