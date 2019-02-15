@@ -37,7 +37,7 @@ PS1="\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\$(parse_git_branch_or_tag) %"
 # git aliases
 alias glog='git log --pretty=oneline'
 alias ginfo='git remote show origin'
-alias ginfo_ = 'git remote show origin -n | grep "Fetch URL:" | sed -E "s#^.*/(.*)$#\1#" | sed "s#.git$##"'
+alias ginfo_='git remote show origin -n | grep "Fetch URL:" | sed -E "s#^.*/(.*)$#\1#" | sed "s#.git$##"'
 
 
 # tmux aliases
