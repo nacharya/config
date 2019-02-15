@@ -30,6 +30,7 @@ create()
 			cp ${THIS_DIR}/screen/screenrc ~/.screenrc
 	fi
 	if [ $1 = "bash" ]; then
+			cp ${THIS_DIR}/bash/bash_profile ~/.bash_profile
 			mkdir -p ~/.xbash
 			cp ${THIS_DIR}/bash/xbash/xbashrc ~/.xbash/xbashrc
 	fi
@@ -78,6 +79,7 @@ backup()
 			cp ~/.screenrc ~/.backup/.screenrc
 	fi
 	if [ $1 = "bash" ]; then
+			cp ~/.bash_profile ~/.backup
 			cp -r ~/.xbash ~/.backup
 	fi
 	if [ $1 = "aws" ]; then
@@ -127,6 +129,7 @@ restore()
 			cp ~/.backup/.screenrc ~/.screenrc
 	fi
 	if [ $1 = "bash" ]; then
+			cp ~/.backup/.bash_profile ~/
 			cp -r ~/.backup/.xbash ~/
 	fi
 	if [ $1 = "aws" ]; then
@@ -171,6 +174,7 @@ cleanup()
 		rm -f ~/.screenrc
 	fi
 	if [ $1 = "bash" ]; then
+		rm -f ~/.bash_profile
 		rm -rf ~/.xbash
 	fi
 	if [ $1 = "aws" ]; then
