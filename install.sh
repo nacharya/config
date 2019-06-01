@@ -1,6 +1,7 @@
 # install the config files for a component
 
-export COMPONENTS="vim tmux screen bash aws git sp3 gdb "
+#export COMPONENTS="vim tmux screen bash aws git sp3 gdb "
+export COMPONENTS="vim tmux screen bash aws git gdb "
 export THIS_DIR=`pwd`
 
 
