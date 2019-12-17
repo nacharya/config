@@ -1,21 +1,4 @@
-
-#
-
+# load the dotfiles xbashrc
 if [ -f ~/.xbash/xbashrc ]; then
 		. ~/.xbash/xbashrc
 fi
-
-
-if [ -f ~/.xbash/aliases ]; then
-		. ~/.xbash/aliases
-fi
-
-
-# create a GO environment
-export GOPATH=$HOME/go-workspace # don't forget to change your path correctly!
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export GOBIN=$GOPATH/bin
-
-
-

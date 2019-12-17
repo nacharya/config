@@ -1,5 +1,3 @@
-# 
-alias cls='clear'
 
 # change the ls colors, blue is hard to see
 LS_COLORS='di=0;35' ; export LS_COLORS
@@ -7,79 +5,35 @@ LS_COLORS='di=0;35' ; export LS_COLORS
 # find the OS we are on
 OS=`uname -s`
 
-# git related
-if [ -f ~/.git-completion.bash ]; then
-	. ~/.git-completion.bash
+# Git env
+if [ ~/.xbash/git.env ]; then
+	. ~/.xbash/git.env
 fi
 
-# setup the git branch name in the prompt
-#
-function parse_git_branch () 
-{
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
+# GO env
+if [ ~/.xbash/go.env ]; then
+	. ~/.xbash/go.env
+fi
 
-function parse_git_tag () 
-{
-	git describe --tags 2> /dev/null
-}
-
-function parse_git_branch_or_tag() 
-{
-	local OUT="$(parse_git_branch)"
-	if [ "$OUT" == " ((no branch))" ]; then
-		OUT="($(parse_git_tag))";
-	fi
-	echo $OUT
-}
-PS1="\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\$(parse_git_branch_or_tag) %"
-
-# git aliases
-alias glog='git log --pretty=oneline'
-alias ginfo='git remote show origin'
-alias ginfo_='git remote show origin -n | grep "Fetch URL:" | sed -E "s#^.*/(.*)$#\1#" | sed "s#.git$##"'
-
-
-# tmux aliases
-alias tmn="tmux new -s"
-alias tmls="tmux list-sessions"
-alias tma="tmux attach-session -t"
-alias tmk="tmux kill-session -t"
-
-
-# Go related
-
-deps()
-{
-	go list -f '{{ join .Deps  "\n"}}' . | grep $1
-}
-
-imports()
-{
-	go list -f '{{ join .Imports "\n" }}' $1
-}
-
+# Py env
+if [ ~/.xbash/py.env ]; then
+	. ~/.xbash/py.env
+fi
 
 # Edge
 
 #OS specific definitions
 if [ $OS == "Linux" ]; then
 	echo $OS $USER $TERM_PROGRAM 
-
-#	export ASAN_SYMBOLIZER_PATH=/usr/lib/llvm-3.5/bin/llvm-symbolizer
-#	export ASAN_OPTIONS=abort_on_error=1:symbolize=1:verbosity=0:handle_segv=0:alloc_dealloc_mismatch=0:replace_cfallocator=0:detect_leaks=1
-#export ASAN_OPTIONS=abort_on_error=1:symbolize=1:handle_segv=0:verbosity=2:replace_cfallocator=0
-#export ASAN_OPTIONS=abort_on_error=1:symbolize=1:verbosity=0:alloc_dealloc_mismatch=0
-
-
 fi
 
 if [ $OS == "Darwin" ]; then
 
-	echo $OS $USER $TERM_PROGRAM 
-	export PATH=/usr/local/sbin:${PATH}:~/bin:/usr/local/bin:/miniconda3/bin
+	export BASH_SILENCE_DEPRECATION_WARNING=1
 
-#	alias rox="ssh user@192.168.1.90"
+	echo $OS $USER $TERM_PROGRAM 
+	export PATH=/usr/local/sbin:${PATH}:~/bin:/usr/local/bin
+
 	function xserver
 	{
 		/Applications/Utilities/XQuartz.app/Contents/MacOS/X11.bin &
@@ -87,7 +41,6 @@ if [ $OS == "Darwin" ]; then
 	function xrox
 	{
 		xhost +localhost
-		#ssh -X user@192.168.1.90
 	}
 
 	# a better cat
@@ -95,5 +48,8 @@ if [ $OS == "Darwin" ]; then
 	alias ping='prettyping '
 	alias top="sudo htop" 
 
-fi
+	# adding a path to visual studio so we can call it from Command line 
+	export PATH=${PATH}:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 
+	export PATH=${PATH}:~/Workspace/bin
+fi
