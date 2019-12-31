@@ -7,18 +7,24 @@ OS=`uname -s`
 
 # Git env
 if [ ~/.xbash/git.env ]; then
-	. ~/.xbash/git.env
+	. ~/.xbash/gitenv
 fi
 
 # GO env
 if [ ~/.xbash/go.env ]; then
-	. ~/.xbash/go.env
+	. ~/.xbash/goenv
 fi
 
 # Py env
 if [ ~/.xbash/py.env ]; then
-	. ~/.xbash/py.env
+	. ~/.xbash/pyenv
 fi
+
+# ML specific
+
+NOTEBOOKS=/home/user/notebooks
+DATASETS=/home/user/datasets
+SRCDIR=/home/user/src
 
 # Edge
 

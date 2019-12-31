@@ -34,6 +34,8 @@ create()
 			cp ${THIS_DIR}/bash/bash_profile ~/.bash_profile
 			mkdir -p ~/.xbash
 			cp ${THIS_DIR}/bash/xbash/xbashrc ~/.xbash/xbashrc
+			cp ${THIS_DIR}/bash/xbash/*env ~/.xbash/
+			cp ${THIS_DIR}/bash/xbash/aliases ~/.xbash/
 	fi
 	if [ $1 = "aws" ]; then
 			mkdir -p ~/.aws
